@@ -23,7 +23,7 @@ def Fibonacci(prev2, prev1):
         prev1 = new_Fibonacci
         count += 1
         return Fibonacci(prev2, prev1)
-# Fibonacci(prev2, prev1)
+# Fibonacci(0, 1)
 
 def F(n):
     if n <= 1:
@@ -94,3 +94,34 @@ for i in range(n - 1):
             min_index = j
     my_array[i], my_array[min_index] = my_array[min_index], my_array[i]
 # print("Sorted array:", my_array)
+
+
+
+""" INSERTION SORT """
+my_array = [64, 34, 25, 12, 22, 11, 90, 5]
+
+n = len(my_array)                           # Bu algoritmda elementlarni siljitish muammosi bor!
+for i in range(1,n):
+    insert_index = i
+    current_value = my_array.pop(i)
+    for j in range(i-1, -1, -1):
+        if my_array[j] > current_value:
+            insert_index = j
+    my_array.insert(insert_index, current_value)
+# print("Sorted array: ", my_array)
+
+
+my_array = [64, 34, 25, 5, 22, 11, 90, 12]  # Tartiblash O(n ** 2) vaqt murakkabligi bilan ishlaydi.
+
+n = len(my_array)                           # Bu algoritmda elementlarni siljitish muammosi hal qilingan!
+for i in range(1,n):
+    insert_index = i
+    current_value = my_array[i]
+    for j in range(i-1, -1, -1):
+        if my_array[j] > current_value:
+            my_array[j+1] = my_array[j]
+            insert_index = j
+        else:
+            break
+    my_array[insert_index] = current_value
+print("Sorted array: ", my_array)
